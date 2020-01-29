@@ -16,7 +16,7 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
 import LastPageIcon from '@material-ui/icons/LastPage';
 import TableHead from '@material-ui/core/TableHead';
 import Button from '@material-ui/core/Button';
-
+import AlertDialog from './../ui/dialog';
 
 const useStyles1 = makeStyles(theme => ({
     root: {
@@ -106,8 +106,11 @@ export default function CustomPaginationActionsTable() {
     const classes = useStyles2();
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [open, setOpen] = React.useState(false);
+
 
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -117,11 +120,20 @@ export default function CustomPaginationActionsTable() {
         setRowsPerPage(parseInt(event.target.value, 10));
         setPage(0);
     };
-  
+
+    const handleClose = () => {
+        setOpen(false);
+      };
+
+      
+    const handleopenDialog = () => {
+        setOpen(true);
+      };
 
     return (
         
        <div>
+        <AlertDialog  open={open} handleClose={handleClose} />
         <TableContainer component={Paper}>
             <Table className={classes.table} aria-label="custom pagination table">
             <TableHead>
@@ -146,7 +158,7 @@ export default function CustomPaginationActionsTable() {
                             <TableCell align="left">{row.date_debut}</TableCell>
                             <TableCell align="left">{row.date_fin}</TableCell>
                             <TableCell align="left">
-                                <Button variant="contained" color="secondary">
+                                <Button variant="contained" color="secondary" onClick={handleopenDialog}>
                                     Déconnecter
                                 </Button>
                             </TableCell>
