@@ -9,7 +9,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Sidebar from  './Sidebar';
-const drawerWidth = 240;
+const drawerWidth = 320;
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,

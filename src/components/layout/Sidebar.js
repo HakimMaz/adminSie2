@@ -11,10 +11,13 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import EqualizerIcon from '@material-ui/icons/Equalizer';
+import GroupIcon from '@material-ui/icons/Group';
+import ListAltIcon from '@material-ui/icons/ListAlt';
 
-const drawerWidth = 240;
+import UserTable from './../utilisateurs/UserConnectes';
+
+const drawerWidth = 320;
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -103,23 +106,32 @@ export default function MiniDrawer(props) {
         </div>
         <Divider />
         <List>
-          {['Gestion de tables de réference', 'Utilisateurs connectés', 'statistique'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+        
+            <ListItem button key={'connectedUser'}>
+              <ListItemIcon> <GroupIcon/> </ListItemIcon>
+              <ListItemText primary={'utilisateurs connectés'} />
             </ListItem>
-          ))}
+            <ListItem button key={'RefTable '}>
+              <ListItemIcon> <ListAltIcon  /> </ListItemIcon>
+              <ListItemText primary={'Gestion de tables de références'} />
+            </ListItem>
+            <ListItem button key={'Stat'}>
+              <ListItemIcon> <EqualizerIcon /> </ListItemIcon>
+              <ListItemText primary={'Statistiques'} />
+            </ListItem>
+            
+         
         </List>
         <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+       
       </Drawer>
+
+      <main className={classes.content}>
+        <div className={classes.toolbar} />
+        
+        <UserTable/>        
+        
+      </main>
     
     </div>
   );
