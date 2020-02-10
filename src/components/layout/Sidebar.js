@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles,useTheme} from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -16,6 +16,7 @@ import GroupIcon from '@material-ui/icons/Group';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 
 import UserTable from './../utilisateurs/UserConnectes';
+import CreateTabRef from '../gestionTableRef/CreateTabRef';
 
 const drawerWidth = 320;
 
@@ -74,14 +75,57 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function MiniDrawer(props) {
+const Sidebar = (props) => {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
 
- 
+  const [selectedIndex, setSelectedIndex] = React.useState(null);
 
-  
+  const SideNavElements = [
+    "utilisateurs Connectés",
+    "Gestion de tables de réferences",
+    "Statistiques",
+
+  ];
+
+  const matchIconWithElement = (indexIcon) => {
+    switch (indexIcon) {
+      case 0:
+        return <GroupIcon />
+      case 1:
+        return <ListAltIcon />
+      case 2:
+        return <EqualizerIcon />
+      default:
+        console.log("none of thes icon");
+        break;
+    }
+  };
+
+  const handleClickListIem = (index) => {
+    setSelectedIndex(index);
+  }
+
+  const matchComponentWithIndex = (selectedIndex) => {
+
+    switch (selectedIndex) {
+      case 1:
+        return <UserTable />;
+
+      case 2:
+        return <CreateTabRef />;
+
+      case 3:
+        console.log("Component three is selected");
+        break;
+
+      default:
+        console.log("none of those cmponenet is selected is selected");
+        break;
+    }
+  }
+
+
 
   return (
     <div className={classes.root}>
@@ -106,33 +150,28 @@ export default function MiniDrawer(props) {
         </div>
         <Divider />
         <List>
-        
-            <ListItem button key={'connectedUser'}>
-              <ListItemIcon> <GroupIcon/> </ListItemIcon>
-              <ListItemText primary={'utilisateurs connectés'} />
+          {SideNavElements.map((text, index) => (
+            <ListItem
+              button
+              key={text}
+              selected={selectedIndex === index + 1}
+              onClick={(e) => handleClickListIem(index + 1)}
+            // onClick={event => handleListItemClick(event, index + 1)}
+            >
+              <ListItemIcon>
+                {matchIconWithElement(index)}
+              </ListItemIcon>
+              <ListItemText primary={text} />
             </ListItem>
-            <ListItem button key={'RefTable '}>
-              <ListItemIcon> <ListAltIcon  /> </ListItemIcon>
-              <ListItemText primary={'Gestion de tables de références'} />
-            </ListItem>
-            <ListItem button key={'Stat'}>
-              <ListItemIcon> <EqualizerIcon /> </ListItemIcon>
-              <ListItemText primary={'Statistiques'} />
-            </ListItem>
-            
-         
+          ))}
         </List>
         <Divider />
-       
       </Drawer>
-
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        
-        <UserTable/>        
-        
+        {matchComponentWithIndex(selectedIndex)}
       </main>
-    
     </div>
   );
 }
+export default Sidebar;

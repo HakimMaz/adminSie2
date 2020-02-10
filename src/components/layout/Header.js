@@ -1,20 +1,20 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import Sidebar from  './Sidebar';
+import AccountCircle from '@material-ui/icons/AccountCircle';
+import Sidebar from './Sidebar';
 const drawerWidth = 320;
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
-  
+
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
@@ -36,24 +36,28 @@ const useStyles = makeStyles(theme => ({
   title: {
     flexGrow: 1,
   },
+  UserIcon: {
+    position: 'absolute',
+    right: '2%',
+  },
+
 }));
 
-export default function Header() {
-    const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
+const Header = () => {
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
 
-    const handleDrawerClose = () => {
-        setOpen(false);
-      };
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
-  
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-       <AppBar
+      <AppBar
         position="fixed"
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
@@ -72,9 +76,21 @@ export default function Header() {
           <Typography variant="h6" noWrap>
             Espace administrateur
           </Typography>
+          <IconButton
+            edge="end"
+            aria-label="account of current user"
+            //aria-controls={menuId}
+            aria-haspopup="true"
+            className={classes.UserIcon}
+            //onClick={handleProfileMenuOpen}
+            color="inherit"
+          >
+            <AccountCircle />
+          </IconButton>
         </Toolbar>
       </AppBar>
-      <Sidebar open={open}  handleDrawerClose={handleDrawerClose}  handleDrawerOpen={handleDrawerOpen}/> 
+      <Sidebar open={open} handleDrawerClose={handleDrawerClose} handleDrawerOpen={handleDrawerOpen} />
     </div>
   );
 }
+export default Header;

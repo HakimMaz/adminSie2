@@ -27,7 +27,7 @@ const rows = [
  
 ];
 
-export default  function  UserTable() {
+const UserTable=()=> {
   const classes = useStyles();
   const [open,setOpen]=React.useState(false);
     const HandleDeconnect = () => {
@@ -77,3 +77,4 @@ export default  function  UserTable() {
     </div> 
   );
 }
+export default UserTable;
