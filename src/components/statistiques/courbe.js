@@ -19,7 +19,7 @@ const generateData = (start, end, step) => {
 const Courbe=()=> {
 
 
-  //adding comment
+  //adding comment nnnn
 
     return (
       <Paper>
