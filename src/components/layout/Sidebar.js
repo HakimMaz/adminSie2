@@ -118,8 +118,7 @@ const Sidebar = (props) => {
         return <CreateTabRef />;
 
       case 3:
-
-        return <barSerie/>;
+        return <Courbe/>;
 
       default:
         console.log("none of those cmponenet is selected is selected");

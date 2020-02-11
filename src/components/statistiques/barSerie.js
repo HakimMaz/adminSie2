@@ -1,39 +1,114 @@
-import * as React from 'react';
-import Paper from '@material-ui/core/Paper';
-import {
-  Chart,
-  BarSeries,
-} from '@devexpress/dx-react-chart-material-ui';
+// import * as React from 'react';
+// import Paper from '@material-ui/core/Paper';
+// import {
+//   Chart,
+//   BarSeries,
+//   LineSeries,
+//   ArgumentAxis,
+//   ValueAxis,
+//   Title,
+//   Legend,
+// } from '@devexpress/dx-react-chart-material-ui';
+// import { ValueScale, Stack } from '@devexpress/dx-react-chart';
 
 
 
-const barSerie =()=> {
+// const Label = symbol => (props) => {
+//   const { text } = props;
+//   return (
+//     <ValueAxis.Label
+//       {...props}
+//       text={text + symbol}
+//     />
+//   );
+// };
 
-    const data = [
-        { year: '1950', population: 2.525 },
-        { year: '1960', population: 3.018 },
-        { year: '1970', population: 3.682 },
-        { year: '1980', population: 4.440 },
-        { year: '1990', population: 5.310 },
-        { year: '2000', population: 6.127 },
-        { year: '2010', population: 6.930 },
-      ];
- 
-   
+// const PriceLabel = Label(' $');
+// const LabelWithThousand = Label(' k');
 
-    return (
-      <Paper>
-        <Chart
-          data={data}
-        >
+// const modifyOilDomain = domain => [domain[0], 2200];
+// const modifyPriceDomain = () => [0, 110];
 
-          <BarSeries
-            valueField="population"
-            argumentField="year"
-          />
-        </Chart>
-      </Paper>
-    );
-  }
+//  class barSerie extends React.PureComponent {
+//   constructor(props) {
+//     super(props);
 
-export default barSerie; 
+//     this.state = {
+//       oilProduction,
+//     };
+//   }
+
+//   render() {
+//     const { oilProduction: chartData } = this.state;
+
+//     return (
+//       <Paper>
+//         <Chart
+//           data={chartData}
+//         >
+//           <ValueScale name="oil" modifyDomain={modifyOilDomain} />
+//           <ValueScale name="price" modifyDomain={modifyPriceDomain} />
+
+//           <ArgumentAxis />
+//           <ValueAxis
+//             scaleName="oil"
+//             labelComponent={LabelWithThousand}
+//           />
+//           <ValueAxis
+//             scaleName="price"
+//             position="right"
+//             labelComponent={PriceLabel}
+//           />
+
+//           <Title
+//             text="Oil production vs Oil price"
+//           />
+
+//           <BarSeries
+//             name="USA"
+//             valueField="usa"
+//             argumentField="year"
+//             scaleName="oil"
+//           />
+//           <BarSeries
+//             name="Saudi Arabia"
+//             valueField="saudiArabia"
+//             argumentField="year"
+//             scaleName="oil"
+//           />
+//           <BarSeries
+//             name="Iran"
+//             valueField="iran"
+//             argumentField="year"
+//             scaleName="oil"
+//           />
+//           <BarSeries
+//             name="Mexico"
+//             valueField="mexico"
+//             argumentField="year"
+//             scaleName="oil"
+//           />
+//           <BarSeries
+//             name="Russia"
+//             valueField="russia"
+//             argumentField="year"
+//             scaleName="oil"
+//           />
+//           <LineSeries
+//             name="Oil Price"
+//             valueField="price"
+//             argumentField="year"
+//             scaleName="price"
+//           />
+//           <Stack
+//             stacks={[
+//               { series: ['USA', 'Saudi Arabia', 'Iran', 'Mexico', 'Russia'] },
+//             ]}
+//           />
+//           <Legend />
+//         </Chart>
+//       </Paper>
+//     );
+//   }
+// }
+// export default barSerie;
