@@ -17,6 +17,8 @@ import ListAltIcon from '@material-ui/icons/ListAlt';
 
 import UserTable from './../utilisateurs/UserConnectes';
 import CreateTabRef from '../gestionTableRef/CreateTabRef';
+import Courbe from './../statistiques/courbe';
+import barSerie from './../statistiques/barSerie';
 
 const drawerWidth = 320;
 
@@ -116,8 +118,8 @@ const Sidebar = (props) => {
         return <CreateTabRef />;
 
       case 3:
-        console.log("Component three is selected");
-        break;
+
+        return <barSerie/>;
 
       default:
         console.log("none of those cmponenet is selected is selected");
