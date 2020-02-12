@@ -17,8 +17,8 @@ import ListAltIcon from '@material-ui/icons/ListAlt';
 
 import UserTable from './../utilisateurs/UserConnectes';
 import CreateTabRef from '../gestionTableRef/CreateTabRef';
-import Courbe from './../statistiques/courbe';
-import barSerie from './../statistiques/barSerie';
+//import Courbe from './../statistiques/courbe';
+import BarSerie from './../statistiques/BarSerie';
 
 const drawerWidth = 320;
 
@@ -118,7 +118,7 @@ const Sidebar = (props) => {
         return <CreateTabRef />;
 
       case 3:
-        return <Courbe/>;
+        return <BarSerie/>;
 
       default:
         console.log("none of those cmponenet is selected is selected");

@@ -1,114 +1,51 @@
-// import * as React from 'react';
-// import Paper from '@material-ui/core/Paper';
-// import {
-//   Chart,
-//   BarSeries,
-//   LineSeries,
-//   ArgumentAxis,
-//   ValueAxis,
-//   Title,
-//   Legend,
-// } from '@devexpress/dx-react-chart-material-ui';
-// import { ValueScale, Stack } from '@devexpress/dx-react-chart';
+import * as React from 'react';
+import Paper from '@material-ui/core/Paper';
+import {
+  Chart,
+  BarSeries,
+  ArgumentAxis,
+  ValueAxis,
+} from '@devexpress/dx-react-chart-material-ui';
+import { EventTracker, HoverState } from '@devexpress/dx-react-chart';
 
+const data = [
+  { year: '1950', population: 2.525 },
+  { year: '1960', population: 3.018 },
+  { year: '1970', population: 3.682 },
+  { year: '1980', population: 4.440 },
+  { year: '1990', population: 5.310 },
+  { year: '2000', population: 6.127 },
+  { year: '2010', population: 6.930 },
+];
 
+export default class BarSerie extends React.Component  {
+  constructor(props) {
+    super(props);
 
-// const Label = symbol => (props) => {
-//   const { text } = props;
-//   return (
-//     <ValueAxis.Label
-//       {...props}
-//       text={text + symbol}
-//     />
-//   );
-// };
+    this.state = {
+      data,
+    };
+  }
 
-// const PriceLabel = Label(' $');
-// const LabelWithThousand = Label(' k');
+  render() {
+    const { data: chartData } = this.state;
 
-// const modifyOilDomain = domain => [domain[0], 2200];
-// const modifyPriceDomain = () => [0, 110];
+    return (
+      <Paper>
+        <Chart
+          data={chartData}
+        >
+          <ArgumentAxis />
+          <ValueAxis />
 
-//  class barSerie extends React.PureComponent {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {
-//       oilProduction,
-//     };
-//   }
-
-//   render() {
-//     const { oilProduction: chartData } = this.state;
-
-//     return (
-//       <Paper>
-//         <Chart
-//           data={chartData}
-//         >
-//           <ValueScale name="oil" modifyDomain={modifyOilDomain} />
-//           <ValueScale name="price" modifyDomain={modifyPriceDomain} />
-
-//           <ArgumentAxis />
-//           <ValueAxis
-//             scaleName="oil"
-//             labelComponent={LabelWithThousand}
-//           />
-//           <ValueAxis
-//             scaleName="price"
-//             position="right"
-//             labelComponent={PriceLabel}
-//           />
-
-//           <Title
-//             text="Oil production vs Oil price"
-//           />
-
-//           <BarSeries
-//             name="USA"
-//             valueField="usa"
-//             argumentField="year"
-//             scaleName="oil"
-//           />
-//           <BarSeries
-//             name="Saudi Arabia"
-//             valueField="saudiArabia"
-//             argumentField="year"
-//             scaleName="oil"
-//           />
-//           <BarSeries
-//             name="Iran"
-//             valueField="iran"
-//             argumentField="year"
-//             scaleName="oil"
-//           />
-//           <BarSeries
-//             name="Mexico"
-//             valueField="mexico"
-//             argumentField="year"
-//             scaleName="oil"
-//           />
-//           <BarSeries
-//             name="Russia"
-//             valueField="russia"
-//             argumentField="year"
-//             scaleName="oil"
-//           />
-//           <LineSeries
-//             name="Oil Price"
-//             valueField="price"
-//             argumentField="year"
-//             scaleName="price"
-//           />
-//           <Stack
-//             stacks={[
-//               { series: ['USA', 'Saudi Arabia', 'Iran', 'Mexico', 'Russia'] },
-//             ]}
-//           />
-//           <Legend />
-//         </Chart>
-//       </Paper>
-//     );
-//   }
-// }
-// export default barSerie;
+          <BarSeries
+            valueField="population"
+            argumentField="year"
+          />
+          <EventTracker />
+          <HoverState />
+        </Chart>
+      </Paper>
+    );
+  }
+}
