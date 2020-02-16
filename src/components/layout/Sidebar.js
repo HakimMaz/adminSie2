@@ -16,7 +16,7 @@ import GroupIcon from '@material-ui/icons/Group';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 
 import UserTable from './../utilisateurs/UserConnectes';
-import CreateTabRef from '../gestionTableRef/CreateTabRef';
+import CreateTableRef from '../gestionTableRef/CreateTabRef';
 //import Courbe from './../statistiques/courbe';
 import BarSerie from './../statistiques/BarSerie';
 
@@ -115,7 +115,7 @@ const Sidebar = (props) => {
         return <UserTable />;
 
       case 2:
-        return <CreateTabRef />;
+        return <CreateTableRef />;
 
       case 3:
         return <BarSerie/>;

@@ -1,0 +1,20 @@
+.rowC
+{
+    display:flex; 
+    flex-direction:row;
+
+}
+.second {
+    margin-left: 30px;
+    width: 500px;
+    float: left;
+    height: 300px;
+    background-color: green;
+}
+.first {
+    margin-left:40px;
+    width: 500px;
+    float: left;
+    height: 300px;
+        background-color: blue;
+}
