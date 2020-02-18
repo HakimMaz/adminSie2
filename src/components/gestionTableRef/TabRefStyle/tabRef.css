@@ -1,20 +1,38 @@
-.rowC
-{
-    display:flex; 
-    flex-direction:row;
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "headerRef headerRef headerRef headerRef headerRef headerRef headerRef headerRef" "gaucheform gaucheform gaucheform gaucheform droitform droitform droitform droitform" "gaucheform gaucheform gaucheform gaucheform droitform droitform droitform droitform" "foteerfrom foteerfrom foteerfrom foteerfrom foteerfrom foteerfrom foteerfrom foteerfrom" "foteerfrom foteerfrom foteerfrom foteerfrom foteerfrom foteerfrom foteerfrom foteerfrom";
+  }
+  
+  .headerRef { 
+      grid-area: headerRef;
+      background-color: antiquewhite;
+      height:50px;
 
-}
-.second {
-    margin-left: 30px;
-    width: 500px;
-    float: left;
-    height: 300px;
-    background-color: green;
-}
-.first {
-    margin-left:40px;
-    width: 500px;
-    float: left;
-    height: 300px;
-        background-color: blue;
-}
+     }
+  
+  .gaucheform {
+       grid-area: gaucheform; 
+       background-color: rgb(215, 215, 250);
+       height:300px;
+       margin-top: 10px;
+       margin-right:5px;
+       margin-bottom: 10px;
+       
+    }
+  
+  .droitform { 
+      grid-area: droitform; 
+      background-color: rgb(215, 250, 217);
+      height:300px;
+      margin-top: 10px;
+      margin-left:5px;
+      margin-bottom: 10px;
+    }
+  
+  .foteerfrom { 
+      grid-area: foteerfrom;
+      background-color: rgb(250, 215, 215);
+      margin-bottom: 10px;
+     }
